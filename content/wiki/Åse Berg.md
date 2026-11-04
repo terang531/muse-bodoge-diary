@@ -2,11 +2,11 @@
 title: Åse Berg
 type: designer
 title_en: Åse Berg
-title_alt: オーセ・ベルグ
+title_alt: Åse Berg
 ---
 
-ノルウェーのボードゲームデザイナーだ。Henrik Bergと一緒に『オレゴン』をデザインしたよ。
+ノルウェーのボードゲームデザイナーだ。夫のHenrik Bergと常に共作で作品を発表している。代表作は、西部開拓の『オレゴン』（2007）と、黒死病の欧州を描いた『ラットゥス』（2010）だ。歴史の題材を、エリアマジョリティやタイル配置といった古典的なメカニクスで軽快に処理する、中量級のユーロゲームが中心だよ。
 
 ===EN===
 
-A Norwegian board game designer. She co-designed Oregon with Henrik Berg.
+A Norwegian board game designer. She always designs together with her husband, Henrik Berg. Their best-known works are Oregon (2007), about settling the American West, and Rattus (2010), set in plague-era Europe. Historical themes, handled lightly with classic mechanics like area majority and tile placement, in mid-weight euro games.
