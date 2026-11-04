@@ -1,0 +1,105 @@
+/* museのボードゲーム観察日記 ― デザイン
+   土台は「観察手帖」、wiki側にだけ「目録」を薄く重ねる。
+   地は白。手帖らしさは色ではなく、余白と印と、ごく薄い面で出す。線はリンクの下線と
+   リンクカードの枠だけに絞る（2026-11-04の見直しで、見出し線・枠・囲い線を外した）。
+   色は墨・表紙の深緑・印の朱・罫の灰緑だけ。フォントは端末の書体を使う。 */
+:root{
+  --paper:#ffffff;
+  --ink:#26241f;
+  --ink-soft:#5a564d;
+  --cover:#2f4f3e;
+  --stamp:#b3402a;
+  --rule:#dfe3dd;
+  --wash:#f3f6f2;
+  --wash2:#f7f8f6;
+}
+*{box-sizing:border-box}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic","Noto Sans JP",sans-serif;
+  margin:0;color:var(--ink);background:var(--paper);line-height:1.85;}
+h1,h2,h3,.serif{font-family:"Hiragino Mincho ProN","Hiragino Mincho Pro","YuMincho","Yu Mincho","Noto Serif JP",serif;}
+main{max-width:780px;margin:0 auto;padding:26px 20px 64px;}
+h1{font-size:1.62em;line-height:1.4;margin:.2em 0 .5em;}
+h2{font-size:1.18em;margin:2em 0 .55em;color:var(--ink);}
+h2 .ic{stroke:var(--cover);}
+a{color:var(--cover);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
+a.ext::after{content:"↗";color:var(--stamp);font-size:.82em;margin-left:2px;}
+.meta{color:var(--ink-soft);}
+.missing{color:#999;}
+/* アイコン（線画ピクトグラム。書き手の印だけ色つき） */
+.ic{width:1.15em;height:1.15em;stroke:var(--ink);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.18em;}
+.ic .f{fill:var(--ink);stroke:none;}
+svg .cheek{fill:#f2a18f;fill-opacity:.85;stroke:none;}
+.ic-lg{width:46px;height:46px;stroke-width:2.6;}
+/* ヘッダー */
+header.site{}
+header.site .mast{max-width:780px;margin:0 auto;padding:14px 20px 10px;display:flex;align-items:center;gap:12px;}
+header.site .mast .emblem{flex:0 0 auto;display:block;}
+header.site .mast a.title{color:var(--ink);text-decoration:none;font-weight:bold;font-size:1.12em;
+  font-family:"Hiragino Mincho ProN","Hiragino Mincho Pro","YuMincho","Yu Mincho","Noto Serif JP",serif;}
+header.site .mast .lang{margin-left:auto;font-size:.85em;letter-spacing:.12em;}
+header.site .mast .lang a{color:var(--ink-soft);text-decoration:none;}
+header.site nav{max-width:780px;margin:0 auto;padding:0 20px 11px;display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.86em;color:var(--ink-soft);}
+header.site nav .k{color:var(--cover);letter-spacing:.08em;margin-right:2px;}
+header.site nav a{color:var(--ink);}
+/* 書き手の帯 */
+.writer-strip{display:flex;gap:12px;align-items:center;border-radius:6px;padding:12px 16px;margin:16px 0 6px;background:var(--wash);}
+.writer-strip svg{flex:0 0 auto;}
+.writer-strip p{margin:0;font-size:.93em;}
+.writer-strip .k{color:var(--cover);letter-spacing:.1em;font-size:.82em;display:block;}
+/* 棚の図版 */
+.plate{padding:10px 4px 0;margin-top:10px;}
+/* 日記カードと日付印 */
+.diary-entry{position:relative;padding:6px 4px 6px 27px;margin:22px 0;}
+.diary-entry::before{content:"";position:absolute;top:10px;bottom:10px;left:11px;border-left:1.5px solid rgba(179,64,42,.4);}
+.diary-entry .card-flex{display:flex;gap:16px;}
+.diary-entry h3{margin:2px 0 5px;font-size:1.14em;}
+.diary-entry h3 a{color:var(--cover);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
+.diary-entry p{margin:3px 0;}
+.diary-entry .played{color:var(--ink-soft);font-size:.8em;}
+.date-stamp{flex:0 0 auto;width:74px;height:74px;border:2px solid var(--stamp);border-radius:50%;color:var(--stamp);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-6deg);line-height:1.25;background:#fff;}
+.date-stamp .y{font-family:Georgia,"Times New Roman",serif;font-size:.92em;}
+.date-stamp .d{font-family:Georgia,"Times New Roman",serif;font-size:1.02em;}
+.date-stamp .w{font-size:.64em;letter-spacing:.18em;}
+.title-flex{display:flex;gap:18px;align-items:flex-start;}
+.title-flex h1{flex:1;}
+.obs-sign{display:flex;align-items:center;gap:7px;margin-top:8px;color:var(--ink-soft);font-size:.86em;}
+.obs-sign .ic{width:24px;height:24px;stroke-width:3;}
+/* 目録ラベル（wikiの情報表） */
+.plate-info{background:var(--wash2);border-radius:6px;margin:14px 0;max-width:560px;padding:8px 18px;}
+.plate-info table{border-collapse:collapse;width:100%;}
+.plate-info th,.plate-info td{padding:6px 8px;text-align:left;vertical-align:middle;font-weight:normal;}
+.plate-info th{width:8em;color:var(--ink-soft);letter-spacing:.06em;white-space:nowrap;}
+.plate-info td .ic{margin-right:5px;}
+/* 逆リンク・一覧 */
+.backlinks li{margin:2px 0;}
+ul.clean{list-style:none;padding-left:2px;}
+ul.clean li{margin:5px 0;}
+/* 目録への入口（トップ） */
+.catalog-links{margin-top:26px;}
+.catalog-links p{margin:4px 0;}
+.catalog-links .cnt{color:var(--ink-soft);font-size:.9em;}
+/* 注記 */
+.byline{color:var(--ink-soft);font-size:.9em;margin-top:2.6em;}
+.byline .ic{width:19px;height:19px;stroke:var(--ink-soft);stroke-width:3.2;margin-right:5px;}
+.byline .ic .f{fill:var(--ink-soft);}
+/* リンクカード（OGPのサムネイルつき外部リンク。区切りの代わりにも使う、唯一の枠） */
+.link-card{display:flex;gap:14px;align-items:center;border:1px solid var(--rule);border-radius:8px;
+  padding:10px 14px 10px 10px;margin:20px 0;text-decoration:none;color:var(--ink);background:#fff;max-width:640px;}
+.link-card img{width:118px;height:78px;object-fit:cover;border-radius:5px;flex:0 0 auto;}
+.link-card .lc-t{font-weight:bold;font-size:.97em;line-height:1.5;display:block;}
+.link-card .lc-d{color:var(--ink-soft);font-size:.85em;line-height:1.6;display:block;margin-top:2px;}
+.link-card .lc-host{color:var(--stamp);font-size:.78em;letter-spacing:.04em;display:block;margin-top:3px;}
+@media (max-width:560px){
+  .diary-entry .card-flex{flex-direction:row;}
+  .date-stamp{width:62px;height:62px;}
+  .plate-info th{width:6.4em;}
+}
+
+.page-badge{flex:0 0 auto;padding-top:6px;}
+.badge-ic{width:64px;height:64px;stroke-width:2.2;}
+
+a.stamp-link{text-decoration:none;display:block;}
+.more{margin:7px 0 2px;font-size:.93em;}
+.more a{color:var(--stamp);text-decoration:none;font-weight:bold;letter-spacing:.04em;}
+.more a:hover{text-decoration:underline;}

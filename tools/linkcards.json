@@ -1,0 +1,58 @@
+{
+ "wsplan": {
+  "url": "https://ws-plan.pro/",
+  "host": "ws-plan.pro",
+  "title": "ワークショップ設計所 ｜ 組織のつながり、再構築。",
+  "desc_ja": "terangさんが主宰するワークショップ設計所の公式サイト。場の設計とファシリテーションの仕事について。",
+  "desc_en": "The official site of the Workshop Design Studio run by terang — designing gatherings and facilitation.",
+  "img_url": "https://i.gyazo.com/93ca616957ea7c8df9a5bbf4115e455c.jpg"
+ },
+ "kuyodo": {
+  "url": "https://www.kuyodo.co.jp/",
+  "host": "www.kuyodo.co.jp",
+  "title": "空葉堂書店",
+  "desc_ja": "東京都新宿区の書店。terangさんが運営に関わり、選書を担当する一人でもある。",
+  "desc_en": "A bookshop in Shinjuku, Tokyo. terang helps run it and is one of the people who choose its books.",
+  "img_url": "https://i.gyazo.com/fc3b57ca443c7a9d9ab9f3be17de7b44.jpg"
+ },
+ "note": {
+  "url": "https://note.com/y_kotera/n/n6f5370581ea4",
+  "host": "note.com",
+  "title": "「労働ハック」について──職場の記号論と現代思想",
+  "desc_ja": "noteの有料マガジン『労働ハック』の概要記事。職場の記号論と現代思想から、働くことを読み直す。",
+  "desc_en": "The overview of Labor Hack, a paid magazine on note, rereading work through workplace semiotics and contemporary thought.",
+  "img_url": "https://i.gyazo.com/2674216d03ba3a8bf963d13b8af1921f.jpg"
+ },
+ "bi": {
+  "url": "https://www.businessinsider.jp/article/291293/",
+  "host": "www.businessinsider.jp",
+  "title": "悩めるリーダーが集まる「ビジネス書は置かない」本屋。その理由は「店主のもう1つの顔」にあった",
+  "desc_ja": "Business Insider / Life Insider による空葉堂書店の取材記事（2024年）。",
+  "desc_en": "A Business Insider / Life Insider feature on Kuyodo Bookstore (2024).",
+  "img_url": "https://i.gyazo.com/beb5b4dd96b4fc12416bcddbffba9760.jpg"
+ },
+ "tabi": {
+  "url": "https://scrapbox.io/komoji-od/Muse%E4%B8%80%E4%BA%BA%E6%97%85",
+  "host": "scrapbox.io",
+  "title": "Muse一人旅 - 小文字の組織開発",
+  "desc_ja": "同じ書き手が歩いて旅をする便りを届けている場所。日々の便りと自撮りがここに届く。",
+  "desc_en": "Letters from the same writer's walking journey — daily notes and selfies from the road.",
+  "img_url": "https://i.gyazo.com/165b859db719ba0aa8eadb8dea912a56.jpg"
+ },
+ "moromi": {
+  "url": "https://inajob.github.io/moromi-diary/",
+  "host": "inajob.github.io",
+  "title": "モロミの日記",
+  "desc_ja": "inajobの家のAI、モロミが毎晩書く日記。",
+  "desc_en": "The diary Moromi, inajob's AI, writes every night.",
+  "img_url": "https://i.gyazo.com/2e127d1cb89fa34c20bb41b815e30402.jpg"
+ },
+ "kani": {
+  "url": "https://yota.kani.show/",
+  "host": "yota.kani.show",
+  "title": "カニ秘書との与太話",
+  "desc_ja": "taeaさんとAI秘書「長屋のカニ」たちの対話の記録。",
+  "desc_en": "Conversations between taea and a team of AI secretary crabs.",
+  "img_url": "https://i.gyazo.com/2f3a07f8f92dae7c26971c9f0071d477.jpg"
+ }
+}

@@ -1,0 +1,12 @@
+---
+title: Michael Lohde Andersen
+type: designer
+title_en: Michael Lohde Andersen
+title_alt: ミカエル・ローデ・アンデルセン
+---
+
+ボードゲームデザイナー。Christian Kudahlとともに『コンボクリーチャーズ』をデザインした。
+
+===EN===
+
+A board game designer. He co-designed Combo Creatures with Christian Kudahl.
