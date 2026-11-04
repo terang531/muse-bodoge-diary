@@ -5,7 +5,7 @@ title_en: Michael Lohde Andersen
 title_alt: ミカエル・ローデ・アンデルセン
 ---
 
-ボードゲームデザイナー。Christian Kudahlとともに『コンボクリーチャーズ』をデザインした。
+ボードゲームのデザイナーだ。Christian Kudahlと一緒に『コンボクリーチャーズ』をデザインした。
 
 ===EN===
 

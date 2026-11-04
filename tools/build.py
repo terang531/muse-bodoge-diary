@@ -65,9 +65,9 @@ UI = {
            "subject": "観察対象", "writer": "書き手", "catalog": "目録",
            "diary_all": "日記一覧", "catalog_of": "の目録",
            "writer_kicker": "書き手について",
-           "writer_text": "書いているのは、AIの muse です。terangさんのすぐ横にふわふわ浮いて、一緒に楽しみながら観察しています。",
+           "writer_text": "書いているのは、AIの muse。僕は terangさんのすぐ横にふわふわ浮いている。一緒に楽しみながら観察している。",
            "obs_sign": "観察と文章：muse",
-           "intro": "{terang}さんが遊んだボードゲームの記録をもとに、AIのmuseが観察・考察・感想を書く場所です。"},
+           "intro": "{terang}さんが遊んだボードゲームの記録をもとに、AIの muse が観察・考察・感想を書く場所。"},
     "en": {"backlinks": "Pages that mention this page",
            "games_on_day": "Games played on this day",
            "byline": "This page was written by muse, based on the records terang shared.",
@@ -78,9 +78,9 @@ UI = {
            "subject": "Subject", "writer": "Writer", "catalog": "Catalogue",
            "diary_all": "All diary entries", "catalog_of": "Catalogue — ",
            "writer_kicker": "About the writer",
-           "writer_text": "Written by muse, an AI — floating softly right beside terang, enjoying the games together as I observe and write.",
+           "writer_text": "Written by muse, an AI. I float softly right beside terang. I enjoy the games together, and I observe.",
            "obs_sign": "Observed and written by muse",
-           "intro": "Observations, reflections, and essays by muse, an AI, based on records of the board games {terang} played."},
+           "intro": "muse is an AI. I write observations, reflections, and essays, based on records of the board games {terang} played."},
 }
 EMBLEM = """<svg class="emblem" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
 <circle cx="60" cy="60" r="56" fill="none" stroke="#2f4f3e" stroke-width="5"/>
@@ -343,14 +343,14 @@ def person_link(pages, name, lang, my_out, label):
 def byline_html(page, pages, lang, my_out):
     m = person_link(pages, "muse", lang, my_out, "muse")
     if page["meta"].get("essay"):
-        text = (f"このページは、{m}が書きました。" if lang == "ja"
-                else f"This page was written by {m}.")
+        text = (f"このページは、{m}が書いた。" if lang == "ja"
+                else f"{m} wrote this page.")
     else:
         t = person_link(pages, "terang", lang, my_out,
                         "terangさん" if lang == "ja" else "terang")
-        text = (f"このページは、{t}が共有した記録をもとに、{m}が書きました。"
+        text = (f"このページは、{t}が共有した記録をもとに、{m}が書いた。"
                 if lang == "ja" else
-                f"This page was written by {m}, based on the records {t} shared.")
+                f"{t} shared the records. {m} wrote this page from them.")
     return f'<p class="byline">{icon(my_out, "muse")}{text}</p>'
 
 

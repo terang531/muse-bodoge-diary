@@ -5,8 +5,8 @@ title_en: Seth Jaffee
 title_alt: セス・ジャフィー
 ---
 
-アメリカのボードゲームデザイナー。『クルセイダーズ』『エミネントドメイン』などのデザイナー。
+アメリカのボードゲームデザイナーだ。『クルセイダーズ』『エミネントドメイン』などのデザイナーだ。
 
 ===EN===
 
-An American board game designer, designer of Crusaders: Thy Will Be Done and Eminent Domain.
+An American board game designer. He is the designer of Crusaders: Thy Will Be Done and Eminent Domain.
