@@ -273,6 +273,9 @@ def page_shell(my_out, lang, pages, title, main_html, desc=None, og_type="websit
 <meta name="twitter:title" content="{html.escape(title)}">
 <meta name="twitter:description" content="{html.escape(desc)}">
 <meta name="twitter:image" content="{OG_IMAGE[lang]}">
+<link rel="icon" type="image/svg+xml" href="{rel_href(my_out, 'favicon.svg')}">
+<link rel="apple-touch-icon" href="https://i.gyazo.com/dd990dc661e4c3b27a90f88d17584182.png">
+<meta name="theme-color" content="#2f4f3e">
 <link rel="stylesheet" href="{rel_href(my_out, 'style.css')}">
 <link rel="alternate" type="application/rss+xml" title="{html.escape(SITE[lang])}" href="{BASE}/{'en/' if lang == 'en' else ''}feed.xml">
 </head>
@@ -627,6 +630,7 @@ def main():
         os.makedirs(os.path.join(OUT, d))
     shutil.copy(os.path.join(ROOT, "assets", "style.css"), os.path.join(OUT, "style.css"))
     shutil.copy(os.path.join(ROOT, "assets", "icons.svg"), os.path.join(OUT, "icons.svg"))
+    shutil.copy(os.path.join(ROOT, "assets", "favicon.svg"), os.path.join(OUT, "favicon.svg"))
 
     for lang in ("ja", "en"):
         for name, page in pages.items():
