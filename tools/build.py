@@ -31,6 +31,8 @@ OUT = os.path.join(ROOT, "docs")
 
 SITE = {"ja": "museのボードゲーム観察日記", "en": "muse's Board Game Observation Diary"}
 BASE = "https://terang531.github.io/muse-bodoge-diary"
+OG_IMAGE = {"ja": "https://i.gyazo.com/bbe9f2acfbaf806f0a9e945131525f89.jpg",
+            "en": "https://i.gyazo.com/76a3deb8beb6ad7cf973377ff183d854.jpg"}
 SITE_DESC = {"ja": "terangさんが遊んだボードゲームの記録をもとに、AIのmuseが観察・考察・感想を書く場所です。", "en": "Observations, reflections, and essays by muse, an AI, based on records of the board games terang played."}
 TYPE_LABEL = {
     "ja": {"game": "ゲーム", "designer": "デザイナー・作者", "mechanic": "メカニクス",
@@ -234,13 +236,43 @@ def header_html(my_out, lang, pages):
 </header>"""
 
 
-def page_shell(my_out, lang, pages, title, main_html):
+def plain_text(body, pages, lang, limit=110):
+    t = re.sub(r"@card\s+\S+", "", body)
+    def sub_link(m):
+        target, label = m.group(1), m.group(2)
+        if label:
+            return label
+        if target in pages:
+            return prose_name(pages[target], lang)
+        return target
+    t = WIKILINK.sub(sub_link, t)
+    t = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", t)
+    t = re.sub(r"^#+\s*", "", t, flags=re.M)
+    t = re.sub(r"\s+", " ", t).strip()
+    return t[:limit]
+
+
+def page_shell(my_out, lang, pages, title, main_html, desc=None, og_type="website"):
+    if desc is None:
+        desc = SITE_DESC[lang]
+    url = f"{BASE}/{my_out}"
     return f"""<!DOCTYPE html>
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title>
+<meta name="description" content="{html.escape(desc)}">
+<meta property="og:title" content="{html.escape(title)}">
+<meta property="og:description" content="{html.escape(desc)}">
+<meta property="og:type" content="{og_type}">
+<meta property="og:url" content="{url}">
+<meta property="og:site_name" content="{html.escape(SITE[lang])}">
+<meta property="og:image" content="{OG_IMAGE[lang]}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{html.escape(title)}">
+<meta name="twitter:description" content="{html.escape(desc)}">
+<meta name="twitter:image" content="{OG_IMAGE[lang]}">
 <link rel="stylesheet" href="{rel_href(my_out, 'style.css')}">
 <link rel="alternate" type="application/rss+xml" title="{html.escape(SITE[lang])}" href="{BASE}/{'en/' if lang == 'en' else ''}feed.xml">
 </head>
@@ -400,7 +432,8 @@ def render(page, pages, backlinks, lang):
     if page["kind"] == "diary":
         parts.append(byline_html(page, pages, lang, my_out))
     return page_shell(my_out, lang, pages,
-                      f'{title_of(page, lang)} | {SITE[lang]}', "\n".join(parts))
+                      f'{title_of(page, lang)} | {SITE[lang]}', "\n".join(parts),
+                      desc=plain_text(body, pages, lang), og_type="article")
 
 
 def games_of(page, pages):
@@ -522,14 +555,18 @@ def render_catalog(ptype, slug, pages, lang):
         f'<li><a href="{rel_href(my_out, out_for(pages[n], lang))}">{html.escape(title_of(pages[n], lang))}</a></li>'
         for n in names)
     main_html = f'<h1>{icon(my_out, "tag")}{html.escape(title)}</h1><ul class="clean">{lis}</ul>'
-    return page_shell(my_out, lang, pages, f'{title} | {SITE[lang]}', main_html)
+    cdesc = (f'{lab}の目録。{SITE_DESC[lang]}' if lang == "ja"
+             else f'Catalogue of {lab}. {SITE_DESC[lang]}')
+    return page_shell(my_out, lang, pages, f'{title} | {SITE[lang]}', main_html, desc=cdesc)
 
 
 def render_diary_index(pages, diaries_sorted, lang):
     my_out = os.path.join("diary", "index.html") if lang == "ja" else os.path.join("en", "diary", "index.html")
     cards = "".join(diary_card(p, pages, lang, my_out) for p in diaries_sorted)
     main_html = f'<h1>{icon(my_out, "feather")}{UI[lang]["diary_all"]}</h1>{cards}'
-    return page_shell(my_out, lang, pages, f'{UI[lang]["diary_all"]} | {SITE[lang]}', main_html)
+    ddesc = (f'日記の全一覧。{SITE_DESC[lang]}' if lang == "ja"
+             else f'All diary entries. {SITE_DESC[lang]}')
+    return page_shell(my_out, lang, pages, f'{UI[lang]["diary_all"]} | {SITE[lang]}', main_html, desc=ddesc)
 
 
 def render_feed(pages, diaries_sorted, lang):
