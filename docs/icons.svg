@@ -104,7 +104,7 @@
       </g>
     </symbol>
     <symbol id="i-rss" viewBox="0 0 64 64">
-      <circle class="f" cx="18" cy="46" r="4.6"/>
+      <circle class="f" cx="18" cy="46" r="4.6" fill="#b3402a" stroke="none"/>
       <path d="M18 33.5 A12.5 12.5 0 0 1 30.5 46"/>
       <path d="M18 21 A25 25 0 0 1 43 46"/>
     </symbol>

@@ -220,9 +220,11 @@ def header_html(my_out, lang, pages):
     sep = " ・ " if lang == "ja" else " · "
     nav.append(f'<span><span class="k">{UI[lang]["catalog"]}</span> {sep.join(cat)}</span>')
     feed_out = "feed.xml" if lang == "ja" else os.path.join("en", "feed.xml")
-    nav.append(f'<span><a class="rss-link" href="{rel_href(my_out, feed_out)}" title="RSS" aria-label="RSS">{icon(my_out, "rss", "ic rss-ic")}</a></span>')
+    feed_title = "RSSフィード" if lang == "ja" else "RSS feed"
+    rss_link = (f'<a class="rss-link" href="{rel_href(my_out, feed_out)}" title="{feed_title}" '
+                f'aria-label="{feed_title}">{icon(my_out, "rss", "ic rss-ic")}<span>RSS</span></a>')
     return f"""<header class="site">
-<div class="mast">{EMBLEM}<a class="title" href="{home}">{SITE[lang]}</a><span class="lang"><a href="{rel_href(my_out, switch_out)}">{UI[lang]['switch']}</a></span></div>
+<div class="mast">{EMBLEM}<a class="title" href="{home}">{SITE[lang]}</a>{rss_link}<span class="lang"><a href="{rel_href(my_out, switch_out)}">{UI[lang]['switch']}</a></span></div>
 <nav>{''.join(nav)}</nav>
 </header>"""
 

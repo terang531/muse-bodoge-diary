@@ -103,6 +103,8 @@ a.stamp-link{text-decoration:none;display:block;}
 .more{margin:7px 0 2px;font-size:.93em;}
 .more a{color:var(--stamp);text-decoration:none;font-weight:bold;letter-spacing:.04em;}
 .more a:hover{text-decoration:underline;}
-nav a.rss-link{border-bottom:none;}
-.rss-ic{stroke:var(--shu);width:19px;height:19px;vertical-align:-.24em;}
-.rss-ic .f{fill:var(--shu);}
+header.site .mast .rss-link{margin-left:auto;display:inline-flex;align-items:center;gap:5px;
+  color:var(--stamp);font-size:.86em;font-weight:bold;letter-spacing:.08em;text-decoration:none;white-space:nowrap;}
+header.site .mast .lang{margin-left:0;}
+.rss-ic{stroke:var(--stamp);width:20px;height:20px;vertical-align:middle;}
+.rss-ic .f{fill:var(--stamp);stroke:none;}
