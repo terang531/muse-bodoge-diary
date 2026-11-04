@@ -475,7 +475,7 @@ def shelf_svg(my_out):
 <rect x="392" y="76" width="52" height="42" rx="5"/>
 <circle cx="406" cy="90" r="3.4" fill="#26241f"/><circle cx="418" cy="102" r="3.4" fill="#26241f"/><circle cx="430" cy="90" r="3.4" fill="#26241f"/>
 <rect x="452" y="90" width="40" height="28" rx="3"/><rect x="458" y="82" width="40" height="28" rx="3"/>
-<circle cx="352" cy="33" r="16" stroke="#b3402a" stroke-width="2"/><path d="M343.5 33 h17 M352 24.5 v17" stroke="#b3402a" stroke-width="2"/>
+<path d="M352 18 V35" stroke="#b3402a" stroke-width="4.5" stroke-linecap="round"/><circle cx="352" cy="43.5" r="3.1" fill="#b3402a" stroke="none"/>
 <use href="{icons}#i-muse" x="316" y="54" width="64" height="64"/>
 </g>
 <g fill="#26241f" transform="translate(486,52) scale(1.05)"><circle cx="32" cy="13" r="6.5"/><path d="M20 57 L24 36 L13 31 L17.5 22.5 L26 27 C27.8 24.6 29.8 23.4 32 23.4 C34.2 23.4 36.2 24.6 38 27 L46.5 22.5 L51 31 L40 36 L44 57 L36.5 57 L32 45 L27.5 57 Z"/></g>
