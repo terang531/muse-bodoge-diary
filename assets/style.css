@@ -103,3 +103,6 @@ a.stamp-link{text-decoration:none;display:block;}
 .more{margin:7px 0 2px;font-size:.93em;}
 .more a{color:var(--stamp);text-decoration:none;font-weight:bold;letter-spacing:.04em;}
 .more a:hover{text-decoration:underline;}
+nav a.rss-link{border-bottom:none;}
+.rss-ic{stroke:var(--shu);width:19px;height:19px;vertical-align:-.24em;}
+.rss-ic .f{fill:var(--shu);}

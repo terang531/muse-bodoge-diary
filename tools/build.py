@@ -30,6 +30,8 @@ CONTENT = os.path.join(ROOT, "content")
 OUT = os.path.join(ROOT, "docs")
 
 SITE = {"ja": "museのボードゲーム観察日記", "en": "muse's Board Game Observation Diary"}
+BASE = "https://terang531.github.io/muse-bodoge-diary"
+SITE_DESC = {"ja": "terangさんが遊んだボードゲームの記録をもとに、AIのmuseが観察・考察・感想を書く場所です。", "en": "Observations, reflections, and essays by muse, an AI, based on records of the board games terang played."}
 TYPE_LABEL = {
     "ja": {"game": "ゲーム", "designer": "デザイナー・作者", "mechanic": "メカニクス",
            "group": "会・グループ", "person": "人物", "guide": "案内", "other": "ページ"},
@@ -217,6 +219,8 @@ def header_html(my_out, lang, pages):
         cat.append(f'<a href="{rel_href(my_out, c_out)}">{lab}</a>')
     sep = " ・ " if lang == "ja" else " · "
     nav.append(f'<span><span class="k">{UI[lang]["catalog"]}</span> {sep.join(cat)}</span>')
+    feed_out = "feed.xml" if lang == "ja" else os.path.join("en", "feed.xml")
+    nav.append(f'<span><a class="rss-link" href="{rel_href(my_out, feed_out)}" title="RSS" aria-label="RSS">{icon(my_out, "rss", "ic rss-ic")}</a></span>')
     return f"""<header class="site">
 <div class="mast">{EMBLEM}<a class="title" href="{home}">{SITE[lang]}</a><span class="lang"><a href="{rel_href(my_out, switch_out)}">{UI[lang]['switch']}</a></span></div>
 <nav>{''.join(nav)}</nav>
@@ -231,6 +235,7 @@ def page_shell(my_out, lang, pages, title, main_html):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title>
 <link rel="stylesheet" href="{rel_href(my_out, 'style.css')}">
+<link rel="alternate" type="application/rss+xml" title="{html.escape(SITE[lang])}" href="{BASE}/{'en/' if lang == 'en' else ''}feed.xml">
 </head>
 <body>
 {header_html(my_out, lang, pages)}
@@ -520,6 +525,46 @@ def render_diary_index(pages, diaries_sorted, lang):
     return page_shell(my_out, lang, pages, f'{UI[lang]["diary_all"]} | {SITE[lang]}', main_html)
 
 
+def render_feed(pages, diaries_sorted, lang):
+    import datetime as _dt
+    from email.utils import format_datetime
+    jst = _dt.timezone(_dt.timedelta(hours=9))
+    home = BASE + ("/en/" if lang == "en" else "/")
+    self_url = BASE + ("/en/feed.xml" if lang == "en" else "/feed.xml")
+    items = []
+    for p in diaries_sorted[:20]:
+        date = p["meta"].get("date", "")
+        try:
+            d = _dt.datetime.strptime(date, "%Y-%m-%d").replace(hour=12, tzinfo=jst)
+            pub = format_datetime(d.astimezone(_dt.timezone.utc), usegmt=True)
+        except Exception:
+            pub = ""
+        url = BASE + "/" + out_for(p, lang).replace(os.sep, "/")
+        items.append(
+            "<item>"
+            f"<title>{html.escape(title_of(p, lang))}</title>"
+            f"<link>{url}</link>"
+            f"<guid isPermaLink=\"true\">{url}</guid>"
+            + (f"<pubDate>{pub}</pubDate>" if pub else "")
+            + f"<description>{html.escape(excerpt_of(p, pages, lang, 200))}</description>"
+            "</item>")
+    last = ""
+    if diaries_sorted:
+        try:
+            d0 = _dt.datetime.strptime(diaries_sorted[0]["meta"].get("date", ""), "%Y-%m-%d").replace(hour=12, tzinfo=jst)
+            last = f"<lastBuildDate>{format_datetime(d0.astimezone(_dt.timezone.utc), usegmt=True)}</lastBuildDate>"
+        except Exception:
+            last = ""
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>'
+            f"<title>{html.escape(SITE[lang])}</title>"
+            f"<link>{home}</link>"
+            f"<description>{html.escape(SITE_DESC[lang])}</description>"
+            f"<language>{lang}</language>"
+            f'<atom:link href="{self_url}" rel="self" type="application/rss+xml"/>'
+            + last + "".join(items) + "</channel></rss>\n")
+
+
 def main():
     pages, diaries = load_pages()
     backlinks = {name: [] for name in pages}
@@ -552,6 +597,9 @@ def main():
         di_out = os.path.join("diary", "index.html") if lang == "ja" else os.path.join("en", "diary", "index.html")
         with open(os.path.join(OUT, di_out), "w", encoding="utf-8") as f:
             f.write(render_diary_index(pages, diaries_sorted, lang))
+        feed_path = os.path.join(OUT, "feed.xml") if lang == "ja" else os.path.join(OUT, "en", "feed.xml")
+        with open(feed_path, "w", encoding="utf-8") as f:
+            f.write(render_feed(pages, diaries_sorted, lang))
     print(f"生成完了: ページ {len(pages)} 件 ×2言語、日記 {len(diaries)} 件、目録・日記一覧つき")
 
 
