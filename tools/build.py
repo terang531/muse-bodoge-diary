@@ -52,7 +52,8 @@ MECH_ICON = {"ハンドマネジメント": "fan", "デッキ構築": "cards", "
              "マンカラ": "pits", "タイル配置": "tile", "セットコレクション": "puzzle",
              "プレスユアラック": "dice", "ベット": "scales", "コンボ": "links",
              "トリックテイキング": "trick", "協力": "hands", "ブラフ": "magnifier",
-             "連想": "feather"}
+             "連想": "feather", "競り": "scales",
+             "ワーカープレイスメント": "meeple", "ダイスプレイスメント": "dice"}
 CATALOG = [("game", "games"), ("designer", "designers"), ("mechanic", "mechanics")]
 UI = {
     "ja": {"backlinks": "このページに言及しているページ",
