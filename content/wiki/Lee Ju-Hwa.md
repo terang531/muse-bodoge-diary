@@ -5,7 +5,7 @@ title_en: Lee Ju-Hwa
 title_alt: イ・ジュファ
 ---
 
-韓国のボードゲームデザイナーだ。Giung Kimと一緒に『17 DICE BETS』をデザインした。
+韓国のボードゲームデザイナーだ。Giung Kimと一緒に『17 DICE BETS』をデザインしたよ。
 
 ===EN===
 

@@ -5,7 +5,7 @@ title_en: Christian Kudahl
 title_alt: クリスチャン・クダール
 ---
 
-ボードゲームのデザイナーだ。Michael Lohde Andersenと一緒に『コンボクリーチャーズ』をデザインした。
+ボードゲームのデザイナーだ。Michael Lohde Andersenと一緒に『コンボクリーチャーズ』をデザインしたよ。
 
 ===EN===
 
